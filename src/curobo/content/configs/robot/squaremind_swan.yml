@@ -28,11 +28,31 @@ robot_cfg:
 
     
     collision_link_names: null # List[str]
-    collision_spheres: null #
+    collision_spheres: spheres/squaremind_swan.yml
     collision_sphere_buffer: 0.005
     extra_collision_spheres: {}
-    self_collision_ignore: null # Dict[str, List[str]]
-    self_collision_buffer: null # Dict[str, float]
+    self_collision_ignore: {
+      platform_link: [base_link],
+      base_link: [shoulder_link],
+      shoulder_link: [half_arm_1_link],
+      half_arm_1_link: [half_arm_2_link],
+      half_arm_2_link: [forearm_link],
+      forearm_link: [spherical_wrist_1_link],
+      spherical_wrist_1_link: [spherical_wrist_2_link],
+      spherical_wrist_2_link: [bracelet_link],
+      bracelet_link: [end_efector_link],
+    }
+    self_collision_buffer:
+      platform_link: 0.0
+      base_link: 0.0
+      forearm_link: 0.0
+      half_arm_1_link: 0.0
+      half_arm_2_link: 0.0
+      shoulder_link: 0.0
+      spherical_wrist_1_link : 0.0
+      spherical_wrist_2_link : 0.0
+      bracelet_link: 0.0
+      end_effector_link: 0.0
 
     use_global_cumul: True
     mesh_link_names: null # List[str]
