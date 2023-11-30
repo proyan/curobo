@@ -13,7 +13,7 @@ __pycache__/
 *$py.class
 
 *.json
-
+*~
 # C extensions
 *.so
 requirements.txt
