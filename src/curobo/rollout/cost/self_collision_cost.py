@@ -22,7 +22,6 @@ from curobo.curobolib.geom import SelfCollisionDistance
 # Local Folder
 from .cost_base import CostBase, CostConfig
 
-
 @dataclass
 class SelfCollisionCostConfig(CostConfig):
     self_collision_kin_config: Optional[SelfCollisionKinematicsConfig] = None

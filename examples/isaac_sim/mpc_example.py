@@ -24,7 +24,7 @@ a = torch.zeros(4, device="cuda:0")
 
 # Standard Library
 import argparse
-
+import asyncio
 ## import curobo:
 
 parser = argparse.ArgumentParser()
@@ -70,6 +70,7 @@ from helper import add_robot_to_scene
 from omni.isaac.core import World
 from omni.isaac.core.objects import cuboid
 from omni.isaac.core.utils.types import ArticulationAction
+import omni
 
 # CuRobo
 from curobo.util.logger import setup_curobo_logger
@@ -135,6 +136,13 @@ def draw_points(rollouts: torch.Tensor):
     draw.draw_points(point_list, colors, sizes)
 
 
+# async def robot_disable_gravity(omni_app, robot):
+#     await omni_app.next_update_async()
+#     print("[company.hello.world] company hello world startup")
+#     await robot.initialize()
+#     robot.disable_gravity()
+
+    
 def main():
     # assuming obstacles are in objects_path:
     my_world = World(stage_units_in_meters=1.0)
@@ -251,6 +259,7 @@ def main():
     cmd_state_full = None
     step = 0
     add_extensions(simulation_app, args.headless_mode)
+    # asyncio.ensure_future(robot_disable_gravity(omni.kit.app.get_app(), robot))
     while simulation_app.is_running():
         if not init_world:
             for _ in range(10):
@@ -374,4 +383,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+    print(World.__file__)
+    input("End of simulation. Input before close")
     simulation_app.close()

@@ -61,7 +61,7 @@ class ManipulabilityCost(CostBase, ManipulabilityCostConfig):
         score[score > self.hinge_value] = self.hinge_value
         score = (self.hinge_value / score) - 1
         cost = self.weight * score
-
+        print("Manipulability cost: ", cost.cpu().numpy())
         return cost
 
     def manipulability(self, q, jac_batch, qdot=None):

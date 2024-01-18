@@ -818,7 +818,6 @@ lbfgs_cuda_fuse(torch::Tensor step_vec, torch::Tensor rho_buffer,
                   epsilon, batch_size, m, v_dim, stable_mode);
         });
   } else {
-
     // v1 does not work
     AT_DISPATCH_FLOATING_TYPES(
         y_buffer.scalar_type(), "lbfgs_cuda_fuse_kernel_v1", [&] {
